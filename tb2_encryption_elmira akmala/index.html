@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" >
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Login Form with floating placeholder and light button</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+  <div class="bg-image"></div>
+<!-- partial:index.partial.html -->
+<div class="login-box">
+  <h2>AES Encryption/Decryption</h2>
+ <br>
+ <br>
+     <label style="color: white;" >Text</label>
+    <div class="user-box">
+      <textarea id="code"></textarea> 
+    </div>
+     <label style="color: white;" >Encryption</label>
+
+    <div class="user-box">
+    <textarea id="en" disable></textarea> 
+    </div>
+    <label style="color: white;" >Decryption</label>
+    <div class="user-box">
+   <textarea id="de" disable></textarea> 
+
+    </div>
+   <button style="background: black;color: white;"  onclick = "encrypt()">Encrypt</button>&nbsp;&nbsp;&nbsp;
+   <button style="background: black;color: white;" onclick = "decrypt()">Decrypt</button>
+
+</div>
+ 
+  
+</body>
+
+<script>
+ function encrypt(){
+            
+         var encrypted = CryptoJS.AES.encrypt(document.getElementById("code").value,'password_value');   
+            document.getElementById("en").innerHTML = encrypted;
+            document.getElementById("de").value = ''
+        }  
+ 
+        function decrypt(){
+         var decrypted = CryptoJS.AES.decrypt(document.getElementById("en").value, 'password_value').toString(CryptoJS.enc.Utf8);
+            document.getElementById("de").value = decrypted;
+            document.getElementById("en").value = '';
+        }    
+
+</script>
+</html>
+
+
